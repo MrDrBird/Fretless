@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Fretless</title>
+        <meta name="Fretless" content="Guitar fretboard and helper tools">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div id='container'>
+            <div id='header'>
+                <h1>Fretless</h1>
+                <div>
+                    <button id='saveChordBtn'>Save Chord</button>
+                    <div id='highlightedNoteDisp'></div>
+                    <button id='resetChordBtn'>Reset Chord</button>
+                </div>
+            </div> 
+            <div id="board">
+                <div id='stringsDisp'></div>
+                <div id='fretCountDisp'></div>
+            </div>
+            <div id="settings">
+                <div>
+                    <h4>Tuning</h4>
+                    <div id="tuningManager"></div>
+                </div>
+                <div>
+                    <div id="stringManager">
+                        <h4>String Count</h4>
+                        <select name="stringCountSelect" id="stringCountSelect">
+                            <option value="E A D G">4 - E A D G</option>
+                            <option value="B E A D G">5 - B E A D G</option>
+                            <option value="E A D G B E" selected>6 - E A D G B E</option>
+                            <option value="B E A D G B E">7 - B E A D G B E</option>
+                            <option value="F# B E A D G B E">8 - F# B E A D G B E</option>
+                        </select>
+                    </div>
+                    <div id="fretManager">
+                        <h4>Fret Manager</h4>
+                        <div>
+                            <span>Low: </span>
+                            <input id='fretLowBtn' type="number" name="lowFret" value='0' min="0" max="27">
+                            <span>High: </span>
+                            <input id='fretHighBtn' type="number" name="highFret" value='24' min="0" max="27">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h4>Saved Chords</h4>
+                    <div id='savedChordsDisp'></div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="js/app.js"></script>
+    </body>
+</html>   

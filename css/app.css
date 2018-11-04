@@ -1,0 +1,233 @@
+*{
+    transition-duration: .5s;
+    box-sizing:border-box;
+}
+
+*:focus{
+    outline: 0;
+}
+
+.string>.fret:hover,
+select,
+button:hover{
+    cursor: pointer;
+}
+
+body{
+    background-color: rgb(240, 240, 240);
+    font-family: sans-serif;
+    margin:0;
+    padding:0;
+}
+
+#container{
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1360px;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header>div{
+    display: flex;
+}
+
+#header button{
+    color: rgb(240, 240, 240);
+    background-color: rgb(35,35,35);
+    margin: 0 6px;
+    padding: 0 12px;
+    border: 2px solid #911;
+    border-radius: 24px;
+    text-shadow: 1px 1px #911;
+    font-weight: 700;
+}
+
+#highlightedNoteDisp{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#highlightedNoteDisp .fret{
+    margin: 2px;
+}
+
+#board{
+    background-color: rgb(231, 183, 127);
+    padding-top: 5px;
+    padding-bottom: 10px;
+    box-shadow: 0 0 1px rgb(35,35,35);
+}
+
+.string{
+    background-color: rgb(240,240,240);
+    padding: 2px 0;
+    margin: 35px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    box-shadow: 0 0 1px rgb(35,35,35);
+}
+
+.fret{
+    color: rgb(240,240,240);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 16px;
+    margin: -20px 2px;
+    border-radius:50%;
+    border: 1px solid rgb(35,35,35);
+    background-color: #911;
+    height: 25px;
+    width: 25px;
+    
+}
+
+#fretCountDisp{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 25px 0;
+    transition-duration: 0s;
+}
+
+.fretNumber{
+    /* used with and must come after 'fret' class */
+    border: 1px solid rgb(35,35,35);
+    color: rgb(35,35,35);
+    background: none;
+}
+
+.openNoteFret{
+    border-radius: 3px;
+    background-color: rgb(35,35,35);
+    border: 2px solid #911;
+    font-weight: 700;
+}
+
+.fretNumber.openNoteFret{
+    color: rgb(240, 240, 240);
+}
+
+.octaveNoteFret{
+    border: 2px solid rgb(240,240,240);    
+    box-shadow: 0 0 0 2px rgb(35,35,35)
+}
+
+.markedNoteFret{
+    box-shadow: 0 0 0 2px rgb(240,240,240);
+}
+
+.fret:hover{
+    z-index: 100;
+}
+
+.highlight{
+    /* background: white; */
+}
+
+.dampen{
+    background-color: rgb(240,240,240);
+    opacity: .67;
+}
+
+.dampen:hover{
+    background-color: rgb(35,35,35);
+    opacity: .8;
+}
+
+.string > .fret:nth-child(1).dampen{
+    background-color: rgb(240,240,240);
+    opacity: .67;
+}
+
+.string > .fret:nth-child(1).dampen:hover{
+    background-color: rgb(35,35,35);
+    opacity: .8;
+}
+
+#settings{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#tuningManager{
+    display: flex;
+}
+
+.savedChord,
+.removeChordBtn,
+.stringTuner,
+#stringCountSelect,
+#fretManager div{
+    color: rgb(240, 240, 240);
+    background-color: rgb(35,35,35);
+    margin: 0 2px;
+    border: 2px solid #911;
+    border-radius: 24px;
+    text-shadow: 1px 1px #911;
+    font-weight: 700;
+}
+
+.stringTuner span{
+    display: flex;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.stringTuner button{
+    color: rgb(240, 240, 240);
+    background: none;
+    border:none;
+    font-size: 22px;
+    width: 100%;
+    padding: 14px;
+    text-shadow: 1px 1px #911;
+    font-weight: 700;
+}
+
+.savedChord,
+.removeChordBtn:hover,
+#stringCountSelect,
+#fretManager div{
+    /* more styles with the .stringTuner group above! */
+    font-size: 18px;
+    padding: 8px 12px;
+}
+
+.removeChordBtn{
+    font-size: 12px;
+    padding: 6px 10px;
+}
+
+input[type='number']{
+    border-radius: 2px;
+    text-align: center;
+    width: 48px;
+    color: rgb(240, 240, 240);
+    background: none;
+    border:none;
+    font-size: 18px;
+    font-weight: 700;
+    text-shadow: 1px 1px #911;
+}
+
+input[type='number']:hover{
+    transition: .1s;
+    background: rgb(100,100,100);
+}
+
+.savedChord{
+    margin-bottom: 4px;
+}
+
+.savedChordGroup{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
