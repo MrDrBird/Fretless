@@ -1,233 +1,350 @@
+/* ********************* */
+/*  COLOR PALLETE GUIDE  */
+/* ********************* */
+
+/* http://paletton.com/#uid=7000u0kssjdk2qYoTnkyBe-Kh9i */
+
+/*  GRAY SCALE */
+/*  !!! DARK: #333 !!! */
+/*  LIGHT: #999 */
+/*  !!! BRIGHT: F4F4F4 !!! */
+
+
+/*  RED  */
+/* !!! STANDARD: #991111  !!! */ 
+/* BRIGHT: #D75050 */
+/* LIGHT: #BA2929 */
+/* SHADE: #740000 */
+/* DARK: #4A0000 */
+
+/*  BROWN  */
+/* STANDARD: #994F11 */
+/* !!! BRIGHT: #D78D50 !!! */
+/* LIGHT: #BA6B29 */
+/* SHADE: #743500 */
+/* DARK: #4A2200 */
+
+/*  BLUE  */
+/* STANDARD: #0A5C5C */
+/* BRIGHT: #308181 */
+/* LIGHT: #196F6F */
+/* SHADE: #004646 */
+/* DARK: #002C2C */
+
+/*  GREEN  */
+/* STANDARD: #0E7A0E */
+/* BRIGHT: #40AC40 */
+/* LIGHT: #219521 */
+/* SHADE: #005D00 */
+/* DARK: #003B00 */
+
+
 *{
-    transition-duration: .5s;
-    box-sizing:border-box;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 0;
+
+    color: #333; /* Dark Gray */    
+    font-family: sans-serif;
+
 }
+
 
 *:focus{
-    outline: 0;
+    outline: none;
 }
 
-.string>.fret:hover,
-select,
-button:hover{
-    cursor: pointer;
+/* Stuff for custom input[type=number] arrows */
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+    opacity: 1;
+
 }
 
 body{
-    background-color: rgb(240, 240, 240);
-    font-family: sans-serif;
-    margin:0;
-    padding:0;
+    margin: 0 auto;
+    max-width: 1260px;
+    background-color: #F4F4F4;/*  Light Gray */
 }
 
-#container{
-    height: 100%;
-    margin: 0 auto;
-    max-width: 1360px;
+select{
+    border-radius: .4em;
+    padding: .2em .4em;
+    color:#333;
+}
+
+.label{
+    margin-right: .1em;
+    color:#911;
+    text-shadow: 0 0 .05em #999;
+    text-align: right;
+    font-weight: 700;
+}
+
+.sBtn,
+.vBtn,
+.hBtn{
+    border: none;
+    background: none;
+    padding: .2em .4em;
+}
+
+.vBtn{
+    width: 100%;
+}
+
+.hBtn{
+    width:2em;
+    line-height: 1.5em;
+}
+
+.vBtn:hover, .hBtn:hover{
+    background-color: #999;
+}
+
+.sBtn{
+    border: .15em solid #333;
+    border-radius: .4em;
+    color: #f4f4f4;
+    background-color:#911;
+    margin: .2em;
+    padding: .4em;
+}
+
+.sBtn:disabled{
+    opacity: .5;
 }
 
 #header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: .8em .4em;
+    overflow: hidden;
 }
 
-#header>div{
+#instrumentManager{
     display: flex;
+    align-items: center;
+    border: .1em solid #333;
+    border-radius: .4em;
+    
+    padding:.4em;
 }
 
-#header button{
-    color: rgb(240, 240, 240);
-    background-color: rgb(35,35,35);
-    margin: 0 6px;
-    padding: 0 12px;
-    border: 2px solid #911;
-    border-radius: 24px;
-    text-shadow: 1px 1px #911;
-    font-weight: 700;
+#main{
+    width:100%;
+    overflow: auto;
 }
 
-#highlightedNoteDisp{
-    display: flex;
-    justify-content: space-evenly;
+#fretBoard{
+    padding: .5em 0;
+    width: 100%;
+    background-color: #D78D50;
 }
 
-#highlightedNoteDisp .fret{
-    margin: 2px;
-}
-
-#board{
-    background-color: rgb(231, 183, 127);
-    padding-top: 5px;
-    padding-bottom: 10px;
-    box-shadow: 0 0 1px rgb(35,35,35);
+#fretBoardStrings{
+    background:none;
 }
 
 .string{
-    background-color: rgb(240,240,240);
-    padding: 2px 0;
-    margin: 35px 0;
     display: flex;
     justify-content: space-evenly;
-    align-items: center;
-    box-shadow: 0 0 1px rgb(35,35,35);
+
+    height: .5em; /* will be altered in JS file*/
+    margin: 1.75em 0;
+    background-color: #f4f4f4; 
+    box-shadow: 0 0 .2em 0em #999;
 }
 
-.fret{
-    color: rgb(240,240,240);
+#fretCount{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #D78D50;
+}
+
+#allNotesDisplay{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#allNotesContainer{
+    display: flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    margin: 0 .4em;
+}
+
+.note, .fret{
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 16px;
-    margin: -20px 2px;
-    border-radius:50%;
-    border: 1px solid rgb(35,35,35);
-    background-color: #911;
-    height: 25px;
-    width: 25px;
+
+    min-height:2em;
+    min-width:2em;
+    max-height:2em;
+    max-width:2em;
+    margin: .4em .1em;
     
+    border: .1em solid #333;
+    border-radius: 50%;
+
+    color: #f4f4f4;
+    text-shadow: 0 0 .05em #999;
+    background-color:#911;
 }
 
-#fretCountDisp{
+.string > .note{
+    margin: -.8em 0;
+}
+
+.fret{
+    color: #991111;
+    background-color: #F4F4F4;
+    margin-top: 0;
+}
+
+.highlightNote, .octiveNote{
+    border-color: #f4f4f4;
+    box-shadow: 0 0 0 .1em #333;
+}
+
+.openNote{
+    background-color: #333;
+    color: #f4f4f4;
+    border: .1em solid #911;
+    border-radius: .2em;
+}
+
+.mute{
+    background-color:#f4f4f4;
+    text-shadow: none;
+    opacity: .5;
+}
+
+.mute:hover {
+    background-color:#333;
+    text-shadow: none;
+}
+
+#extrasDisplay{
     display: flex;
-    justify-content: space-evenly;
-    margin: 25px 0;
-    transition-duration: 0s;
+    justify-content: center;
+    padding: .5em 0;
+    overflow: hidden;
 }
 
-.fretNumber{
-    /* used with and must come after 'fret' class */
-    border: 1px solid rgb(35,35,35);
-    color: rgb(35,35,35);
-    background: none;
+.extra{
+    margin: .4em;
+    border: .1em solid #333;
+    border-radius: .4em;
+    padding: 1em;
+    text-align: center;
 }
 
-.openNoteFret{
-    border-radius: 3px;
-    background-color: rgb(35,35,35);
-    border: 2px solid #911;
+.extrasHeader{
     font-weight: 700;
+    font-size: 1.3em;
+    margin-bottom: .5em;
 }
 
-.fretNumber.openNoteFret{
-    color: rgb(240, 240, 240);
+.limitManager{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    padding: 0 .5em;
+    margin: .3em 0;
 }
 
-.octaveNoteFret{
-    border: 2px solid rgb(240,240,240);    
-    box-shadow: 0 0 0 2px rgb(35,35,35)
+.fretLimitInput{
+    border: .1em solid #999;
+    border-radius: .2em;
+
+    margin: .2em;
+    padding: .2em .4em;
+
+    width: 5em;
+
+    text-align: center;
 }
 
-.markedNoteFret{
-    box-shadow: 0 0 0 2px rgb(240,240,240);
-}
-
-.fret:hover{
-    z-index: 100;
-}
-
-.highlight{
-    /* background: white; */
-}
-
-.dampen{
-    background-color: rgb(240,240,240);
-    opacity: .67;
-}
-
-.dampen:hover{
-    background-color: rgb(35,35,35);
-    opacity: .8;
-}
-
-.string > .fret:nth-child(1).dampen{
-    background-color: rgb(240,240,240);
-    opacity: .67;
-}
-
-.string > .fret:nth-child(1).dampen:hover{
-    background-color: rgb(35,35,35);
-    opacity: .8;
-}
-
-#settings{
+#tuningCustom{
     display: flex;
     justify-content: space-around;
-    text-align: center;
 }
 
-#tuningManager{
-    display: flex;
-}
-
-.savedChord,
-.removeChordBtn,
-.stringTuner,
-#stringCountSelect,
-#fretManager div{
-    color: rgb(240, 240, 240);
-    background-color: rgb(35,35,35);
-    margin: 0 2px;
-    border: 2px solid #911;
-    border-radius: 24px;
-    text-shadow: 1px 1px #911;
-    font-weight: 700;
-}
-
-.stringTuner span{
-    display: flex;
+.tuner{
+    display:flex;
     flex-direction: column;
-    margin: 8px;
+    justify-content: center;
+    justify-items: center;
+
+    border: .1em solid #999;
+    border-radius: .2em;
+    
+    width: 1.75em;
 }
 
-.stringTuner button{
-    color: rgb(240, 240, 240);
-    background: none;
-    border:none;
-    font-size: 22px;
-    width: 100%;
-    padding: 14px;
-    text-shadow: 1px 1px #911;
-    font-weight: 700;
+.tunerNote{
+    padding: .2em 0;
 }
 
-.savedChord,
-.removeChordBtn:hover,
-#stringCountSelect,
-#fretManager div{
-    /* more styles with the .stringTuner group above! */
-    font-size: 18px;
-    padding: 8px 12px;
+#tunerAll{
+    display:flex;
+    justify-content: space-between;
+    justify-items: center;
+    margin: .5em 0;
+    border: .1em solid #999;
+    border-radius: .2em;
 }
 
-.removeChordBtn{
-    font-size: 12px;
-    padding: 6px 10px;
+#chordManager, #keyManager{
+    flex-grow: 1;
+    max-width: 30em;
 }
 
-input[type='number']{
-    border-radius: 2px;
-    text-align: center;
-    width: 48px;
-    color: rgb(240, 240, 240);
-    background: none;
-    border:none;
-    font-size: 18px;
-    font-weight: 700;
-    text-shadow: 1px 1px #911;
-}
-
-input[type='number']:hover{
-    transition: .1s;
-    background: rgb(100,100,100);
-}
-
-.savedChord{
-    margin-bottom: 4px;
-}
-
-.savedChordGroup{
+.chordDisplay{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: .1em solid #999;
+    border-radius: .2em;
+    margin: .4em;
+}
+
+.chordList{
+    margin: .4em 0;
+}
+
+.chord{
+    flex-grow: 1;
+    padding: .2em .4em;
+    text-align: center;   
+}
+
+@media (max-width: 900px) {
+    #extrasDisplay{
+        flex-direction: column;
+    }
+    #chordManager, #keyManager{
+        max-width: 100%;
+    }
+    #limitsContainer{
+        display:flex;
+        justify-content: space-around;
+    }
+}
+
+@media (max-width: 480px) {
+    #header{
+        flex-direction: column;
+    }
+    h1{
+        margin: .4em;
+    }
 }
