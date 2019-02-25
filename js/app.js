@@ -135,28 +135,41 @@ function getSelected(){ // returns array of notes that are note muted
 const headerElement = document.querySelector('#header');
 const mainElement = document.querySelector('#main');
 
-function setPresets(){
+function setScreen(){
     let w = window.innerWidth;
 
     if(w >= 1080){
-        HighFret = 24;
+        HighFret = 24 + LowFret;
     }
     else if(w >= 900){
-        HighFret = 17;
+        HighFret = 17 + LowFret;
     }
     else if(w >= 720){
-        HighFret = 15;
+        HighFret = 15 + LowFret;
     }
     else if(w >= 640){
-        HighFret = 12;
+        HighFret = 12 + LowFret;
     }
     else if(w >= 480){
-        HighFret = 10;
+        HighFret = 10 + LowFret;
     }
     else{
-        HighFret = 8;
+        HighFret = 8 + LowFret;
+    }
+
+    if(HighFret > 27){ HighFret = 27; }
+    if(HighFret < LowFret){HighFret = LowFret}
+
+    let disp = document.querySelector('#limitInputHigh');
+    if(disp){
+        disp.value = HighFret
     }
 }
+
+window.addEventListener('resize', function(){
+    setScreen();
+    refreshFretLimit();
+});
 
 function createInstrumentManager(){ // create all elements for instrument select
     let instManager = newEl('div', 'instrumentManager'); // create new div to contain all parts of the Instrument Manager
@@ -197,7 +210,6 @@ function createFretBoard(){ // create page element to display fretboard
     Tuning.forEach(function(){ // add empty string to fret board for each note in tuneing
         fretBoardStrings.append( newEl('div', false, 'string') ); // attach new string to fretboard
     });
-
     refreshTuning(); // set intial tuning of strings
     createFretCount(); // create fret counter below strings
     
@@ -1001,7 +1013,7 @@ function getScale(rootNote, scaleName){
 ///////////////////////////
 
 function init(){
-    setPresets();
+    setScreen();
     createInstrumentManager();
     createFretBoard();
     createAllNotesDisplay();
